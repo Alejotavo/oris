@@ -1,29 +1,21 @@
 import { useState } from 'react';
 import { getOllamaResponse } from '../services/ollamaApi'
+import { useDashboard } from './useDashboard';
 
 
 
 function Dashboard() {
 
-  const [userInput, setUserInput] = useState("")
-  const [responseData, setResponseData] = useState<string | null>(null);
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState<string | null>(null)
+  const { 
+    responseData, 
+    loading, 
+    error, 
+    userInput, 
+    setResponseData, 
+    setUserInput, 
+    handleSend 
+  } = useDashboard();
 
-  
-
-  const handleSend = async () => {
-    setLoading(true);
-    setError(null);
-    try {
-      const data = await getOllamaResponse(userInput);
-      setResponseData(data.response);
-    } catch (err: any) {
-      setError(err.message || "Error al obtener la respuesta");
-    } finally {
-      setLoading(false);
-    }
-  };
 
   if (loading) {
     return <div>Loading...</div>;
