@@ -1,8 +1,4 @@
-import { useState } from 'react';
-import { getOllamaResponse } from '../services/ollamaApi'
 import { useDashboard } from './useDashboard';
-
-
 
 function Dashboard() {
 
