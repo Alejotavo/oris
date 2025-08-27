@@ -37,10 +37,14 @@ function Dashboard() {
     <div>
       <h1>Dashboard</h1>
 
-     <input type="text" placeholder="Type your message here..." name='userInput' value={userInput} onChange={e => setUserInput(e.target.value)} />
+     <input type="text" 
+        placeholder="Type your message here..." 
+        name='userInput' value={userInput} 
+        onChange={e => setUserInput(e.target.value)} 
+        />
      <button onClick={handleSend}>Send</button>
-
-        <p>{responseData}</p>
+     <p>{responseData}</p>
+     <button onClick={() => setResponseData(null)}>Clear</button>
     </div>
   );
 }
