@@ -20,6 +20,8 @@ async function handleSend(text: string) {
       - "Dormitorio apagado" → ["bedroom_off"]
       - "Living on y dormitorio apagado" → ["living_on", "bedroom_off"]
       - "Living on, dormitorio apagado y jardín encendido" → ["living_on", "bedroom_off", "garden_on"]
+      - "todo encendido" → ["all_on"]
+       "todo apagado" → ["all_off"]
   - No agregues explicaciones ni texto extra. Solo devolvé el array.
   `;
 
