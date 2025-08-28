@@ -41,12 +41,12 @@ async function handleSend(text: string) {
  
       const matches = data.response.match(/"([^"]+)"/g);
       if (matches) {
-        arrayResponse = matches.map(s => s.replace(/"/g, '').trim().toLowerCase());
+        arrayResponse = matches.map((s: string) => s.replace(/"/g, '').trim().toLowerCase());
       } else {
         arrayResponse = data.response
           .replace(/[\[\]{}]+/g, '')
           .split(/,|y/)
-          .map(s => s.trim().toLowerCase())
+          .map((s: string) => s.trim().toLowerCase())
           .filter(Boolean);
       }
     }
