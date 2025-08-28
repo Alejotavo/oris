@@ -1,16 +1,34 @@
+
+import { useEffect } from 'react';
 import { useDashboard } from './useDashboard';
+import SpeechRecognition, { useSpeechRecognition } from "react-speech-recognition";
 
 function Dashboard() {
 
-  const { 
+const { 
+    transcript, 
+    listening, 
+    resetTranscript 
+  } = useSpeechRecognition();
+
+const { 
     responseData, 
     loading, 
     error, 
-    userInput, 
     setResponseData, 
-    setUserInput, 
-    handleSend 
+    setUserVoice, 
+    handleSend,
   } = useDashboard();
+
+
+useEffect(() => {
+  if (!listening && transcript) {
+    setUserVoice(transcript);
+      handleSend();
+      resetTranscript();
+  }
+}, [transcript]);
+
 
 
   if (loading) {
@@ -23,16 +41,11 @@ function Dashboard() {
   
   return (
     <div>
-      <h1>Dashboard</h1>
-
-     <input type="text" 
-        placeholder="Type your message here..." 
-        name='userInput' value={userInput} 
-        onChange={e => setUserInput(e.target.value)} 
-        />
-     <button onClick={handleSend}>Send</button>
-     <p>{responseData}</p>
-     <button onClick={() => setResponseData(null)}>Clear</button>
+     <h1>Dashboard</h1>
+     <p>Response:{responseData}</p>
+     <button onClick={() => { setResponseData(null); resetTranscript(); }}>Clear</button>
+     <button onClick={() => SpeechRecognition.startListening({ continuous: false, language: 'es-ES' })}>Iniciar</button>
+     <p>Transcripción: {transcript}</p>
     </div>
   );
 }

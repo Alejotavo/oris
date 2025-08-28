@@ -3,8 +3,8 @@ import { getOllamaResponse } from "../services/ollamaApi";
 
 
 export const useDashboard = () => {   
-
-  const [userInput, setUserInput] = useState("")
+ 
+  const [userVoice, setUserVoice] = useState("")
   const [responseData, setResponseData] = useState<string | null>(null);
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -14,9 +14,9 @@ export const useDashboard = () => {
     setLoading(true);
     setError(null);
     try {
-      const data = await getOllamaResponse(userInput);
+      const data = await getOllamaResponse(userVoice);
       setResponseData(data.response);
-      setUserInput("");
+      setUserVoice("");
     } catch (err: any) {
       setError(err.message || "Error al obtener la respuesta");
     } finally {
@@ -29,8 +29,7 @@ export const useDashboard = () => {
     setResponseData,
     loading,
     error,
-    userInput,
-    setUserInput,
+    setUserVoice,
     handleSend 
 };
 }
