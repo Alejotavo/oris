@@ -24,7 +24,7 @@ useEffect(() => {
     const timeout = setTimeout(() => {
       handleSend(transcript);
       resetTranscript();
-    }, 1000);
+    }, 2000);
 
     return () => clearTimeout(timeout);
   }
