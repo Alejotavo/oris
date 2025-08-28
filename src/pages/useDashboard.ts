@@ -32,7 +32,6 @@ export const useDashboard = () => {
 
     return {
     responseData,
-    setResponseData,
     loading,
     error,
     handleSend 
