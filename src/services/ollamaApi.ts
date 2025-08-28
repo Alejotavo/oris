@@ -9,11 +9,11 @@ interface OllamaRequest {
   response: string;
 }
 
-export const getOllamaResponse = async (inputText: string) => {
+export const getOllamaResponse = async (query: string) => {
   try {
     const response = await axios.post<OllamaRequest>(`${API_BASE_URL}`, {
       model: "gemma:2b",
-      prompt: inputText,
+      prompt: query,
       stream: false,
       response: ""
     });

@@ -16,28 +16,21 @@ const {
     loading, 
     error, 
     setResponseData, 
-    setUserVoice, 
     handleSend,
   } = useDashboard();
 
 
 useEffect(() => {
   if (!listening && transcript) {
-    setUserVoice(transcript);
-      handleSend();
-      resetTranscript();
+    handleSend(transcript);
+    resetTranscript();
   }
-}, [transcript]);
+}, [listening]);
 
 
+  if (loading) { return <div>Loading...</div>;}
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>Error: {error}</div>;
-  } 
+  if (error) { return <div>Error: {error}</div>;} 
   
   return (
     <div>
