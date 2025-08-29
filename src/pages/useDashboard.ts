@@ -53,12 +53,29 @@ async function handleSend(text: string) {
       }
     }
   } finally {
-    setResponseData(arrayResponse);
-    setLoading(false);
+      setResponseData((prev) => {
+        let updated = prev ? [...prev] : [];
+
+        for (const cmd of arrayResponse) {
+          const [room, state] = cmd.split("_");
+
+          if (room && state) {
+            // Eliminar cualquier estado previo de esa misma room
+            updated = updated.filter((item) => !item.startsWith(`${room}_`));
+            // Agregar el nuevo estado
+            updated.push(cmd);
+          }
+        }
+
+        return updated;
+      });
+
+      setLoading(false);
+    }
+
+    console.log("Respuesta procesada:", arrayResponse);
   }
 
-  console.log("Respuesta procesada:", arrayResponse);
-}
 
 
   return {

@@ -2,6 +2,7 @@
 import { useEffect } from 'react';
 import { useDashboard } from './useDashboard';
 import SpeechRecognition, { useSpeechRecognition } from "react-speech-recognition";
+import VisualBoard from '../components/VisualBoard';
 
 function Dashboard() {
 
@@ -37,6 +38,7 @@ useEffect(() => {
   return (
     <div>
      <h1>Dashboard</h1>
+     <VisualBoard data={responseData} />
      <p>Response:{responseData}</p>
      <button onClick={() => SpeechRecognition.startListening({ continuous: true, language: 'es-ES' })}>Iniciar</button>
      <button onClick={() => SpeechRecognition.stopListening()}>Detener</button>
