@@ -39,19 +39,6 @@ async function handleSend(text: string) {
   } catch (err) {
     console.warn("JSON inválido, fallback aplicado:", err);
 
-    if (data?.response) {
- 
-      const matches = data.response.match(/"([^"]+)"/g);
-      if (matches) {
-        arrayResponse = matches.map((s: string) => s.replace(/"/g, '').trim().toLowerCase());
-      } else {
-        arrayResponse = data.response
-          .replace(/[\[\]{}]+/g, '')
-          .split(/,|y/)
-          .map((s: string) => s.trim().toLowerCase())
-          .filter(Boolean);
-      }
-    }
   } finally {
       setResponseData((prev) => {
         let updated = prev ? [...prev] : [];
