@@ -9,10 +9,10 @@ function VisualBoard({ data }: Props) {
       <h2>Visual Board</h2>
       {/* Aquí puedes agregar la representación visual de los estados de las luces y ambientes */}
       <ul>
-        <li style={{ color: data?.includes("kitchen_on") ? "red" : "blue" }}>Kitchen</li>
-        <li style={{ color: data?.includes("living_on") ? "red" : "blue" }}>Living Room</li>
-        <li style={{ color: data?.includes("bedroom_on") ? "red" : "blue" }}>Bedroom</li>
-        <li style={{ color: data?.includes("bathroom_on") ? "red" : "blue" }}>Bathroom</li>
+        <li style={{ color: data?.includes("kitchen_on") || data?.includes("all_on") ? "red" : "blue" }}>Kitchen</li>
+        <li style={{ color: data?.includes("living_on") || data?.includes("all_on") ? "red" : "blue" }}>Living</li>
+        <li style={{ color: data?.includes("bedroom_on") || data?.includes("all_on") ? "red" : "blue" }}>Bedroom</li>
+        <li style={{ color: data?.includes("bathroom_on") || data?.includes("all_on") ? "red" : "blue" }}>Bathroom</li>
       </ul>
     </div>
   );

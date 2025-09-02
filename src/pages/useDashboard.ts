@@ -20,8 +20,8 @@ async function handleSend(text: string) {
       - "Dormitorio apagado" → ["bedroom_off"]
       - "Living on y dormitorio apagado" → ["living_on", "bedroom_off"]
       - "Living on, dormitorio apagado y jardín encendido" → ["living_on", "bedroom_off", "garden_on"]
-      - "todo encendido" → ["all_on"]
-       "todo apagado" → ["all_off"]
+      - "Todo encendido" → ["all_on"]
+      - "Todo apagado" → ["all_off"]
   - No agregues explicaciones ni texto extra. Solo devolvé el array.
   `;
 
@@ -49,11 +49,12 @@ async function handleSend(text: string) {
           if (room && state) {
             // Eliminar cualquier estado previo de esa misma room
             updated = updated.filter((item) => !item.startsWith(`${room}_`));
+
             // Agregar el nuevo estado
             updated.push(cmd);
           }
         }
-
+        console.log("Estado actualizado del dashboard:", updated);  
         return updated;
       });
 
